@@ -3,3 +3,19 @@ export function assignData<T>(Data: T) {
     this[key] = value
   }
 }
+
+
+export interface IisValid{ isValid: boolean; message: string }
+export function twice<T >(arr:T[],key:string):IisValid{
+
+  let result = { isValid: true, message: "" };
+  let memo: { [key: number]: number } = {};
+  arr.forEach((value) => {
+    if (memo[value[key]] !== undefined) {
+      result.isValid = false;
+      // we return as message the problematic value
+      result.message = value[key];
+    }
+  });
+  return result;
+}

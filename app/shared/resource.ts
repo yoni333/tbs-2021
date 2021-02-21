@@ -1,5 +1,6 @@
 // based on answer https://stackoverflow.com/questions/39701524/using-enum-as-interface-key-in-typescript
 
+import { ClassTypes, Data } from "./data";
 import { assignData } from "./object-utils";
 
 
@@ -34,10 +35,11 @@ function zeroResources():IResource{
   }
 }
 
-export class Resources  {
+export class Resources extends Data<IResource> {
   
   private _resources:IResource
   constructor(resources: Partial<IResource>) {
+    super(ClassTypes.Resources)
     this._resources  = {...zeroResources(),...resources}
   }
 

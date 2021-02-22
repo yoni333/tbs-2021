@@ -12,12 +12,13 @@ export enum ClassTypes {
 }
 
 export interface IData<T>{
-  data:T
+  data:T;
+  getData(): T;
 }
 
 
 
-export class Data<T> implements IData<T>{
+export abstract class Data<T> implements IData<T>{
  protected _data:T;
  private _type:ClassTypes ;
  
@@ -31,6 +32,8 @@ export class Data<T> implements IData<T>{
  get type():ClassTypes{
    return this._type
  }
+ abstract getData(): T;
+  
  error({message,action,caller}:IErrorDataBase){
   ErrorData.error({message,caller,class:this.type,action:action})
 

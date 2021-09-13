@@ -35,7 +35,7 @@ export interface IBuildingLocation {
   uid: UID; //taken from the building himself;
   building: IBuilding;
 }
-export interface ICityDistrict {
+export interface IDistrict {
   metadata: Metadata;
   name: ECityDistricts;
   displayName: ECityDistrictsNames;
@@ -45,7 +45,7 @@ export interface ICityDistrict {
 }
 
 
-export class CityDistrict {
+export class District {
   metadata: Metadata = new Metadata();
   filledBy: IBuildingLocation[] = [];
   name: ECityDistricts;
@@ -53,7 +53,7 @@ export class CityDistrict {
   position: number; // place  in the city
   areaSize: number; //how much buildings that district can have
 
-  constructor(data:Partial<ICityDistrict>) {
+  constructor(data:Partial<IDistrict>) {
 
     assignData.apply(this,data);
 

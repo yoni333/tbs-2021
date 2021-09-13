@@ -6,12 +6,12 @@ console.log(r);
 if (r.resources.food !== 100) { throw new Error("Resource class failed"); }
 
 
-import {CityDistrict, ECityDistrictsNames} from '../app/city/districts'
+import {District, ECityDistrictsNames} from '../app/city/districts'
 import { Metadata } from '../app/shared/metadata';
 import { createUID } from '../app/shared/uid';
 
-const cityDistrict:CityDistrict =  new CityDistrict({displayName:ECityDistrictsNames.academic,areaSize:4,position:1})
-const cityDistrict2:CityDistrict =  new CityDistrict({displayName:ECityDistrictsNames.farms,areaSize:8,position:2})
+const cityDistrict:District =  new District({displayName:ECityDistrictsNames.academic,areaSize:4,position:1})
+const cityDistrict2:District =  new District({displayName:ECityDistrictsNames.farms,areaSize:8,position:2})
 
 if (cityDistrict.areaSize!==4 || cityDistrict.position !==1 || cityDistrict.displayName !== ECityDistrictsNames.academic){
   throw new Error("cityDistrict class failed"); 

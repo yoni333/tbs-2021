@@ -17,7 +17,7 @@ export interface IErrorData extends IErrorDataBase{
 
 }
 
-export class ErrorData{
+export class ErrorData extends Error{
 
   static error(e:IErrorData){
     console.error(e.message ,e.class, e.caller , e.action)

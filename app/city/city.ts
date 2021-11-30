@@ -15,30 +15,31 @@ export interface ICityData {
 }
 
 export class CityValidators {
-  static districtValidator(
-    districts: IDistrict[]
-  ): IisValid {
-   let result = isTwice(districts,'position');
-   if (!result.isValid) result.message=`district number ${result.message} is created more then once`
+  static districtValidator(districts: IDistrict[]): IisValid {
+    let result = isTwice({ arr: districts, key: "position" });
+    if (!result.isValid)
+      result.message = `district number ${result.message} is created more then once`;
     return result;
   }
 }
 
 export class City extends Data<ICityData> {
   constructor(data: ICityData) {
-    super(ClassTypes.city,data);
-    
+    super(ClassTypes.city, data);
   }
   addDistricts(districts: IDistrict[]) {
-    const { isValid,  message } = CityValidators.districtValidator([
+    const { isValid, message } = CityValidators.districtValidator([
       ...this._data.districts,
-      ...districts,
+      ...districts
     ]);
     if (isValid) {
       this._data.districts.push(...districts);
     } else {
-      this.error({message,caller:'addDistrict',action:ErrorActionEnum.dbLog})
+      this.error({
+        message,
+        caller: "addDistrict",
+        action: ErrorActionEnum.dbLog
+      });
     }
   }
-  
 }

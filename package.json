@@ -2,9 +2,9 @@
   "name": "my-tbs-game",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./tests/tests.ts",
   "scripts": {
-    "tsc":"tsc --watch",
+    "tsc": "tsc --watch",
     "test": "jest"
   },
   "author": "",

@@ -15,8 +15,8 @@ export interface ICityData {
 }
 
 export class CityValidators {
-  static districtValidator(districts: IDistrict[]): IisValid {
-    let result = isTwice({ arr: districts, key: "position" });
+  static districtValidator(districts: IDistrict[],newDistrict:IDistrict[]): IisValid {
+    let result = isTwice({ arr: [...districts.map(d=>d.name),...newDistrict.map(d=>d.name)], key: "position" });
     if (!result.isValid)
       result.message = `district number ${result.message} is created more then once`;
     return result;
@@ -28,10 +28,10 @@ export class City extends Data<ICityData> {
     super(ClassTypes.city, data);
   }
   addDistricts(districts: IDistrict[]) {
-    const { isValid, message } = CityValidators.districtValidator([
-      ...this._data.districts,
-      ...districts
-    ]);
+    const { isValid, message } = CityValidators.districtValidator(
+      this._data.districts,
+      districts
+    );
     if (isValid) {
       this._data.districts.push(...districts);
     } else {

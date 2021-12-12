@@ -14,32 +14,35 @@ export interface ICityData {
   details: CityDetails;
 }
 
-export class CityValidators {
-  static districtValidator(districts: IDistrict[],newDistrict:IDistrict[]): IisValid {
-    let result = isTwice({ arr: [...districts.map(d=>d.name),...newDistrict.map(d=>d.name)], key: "position" });
-    if (!result.isValid)
-      result.message = `district number ${result.message} is created more then once`;
-    return result;
-  }
-}
+// export class CityValidators {
+//   static districtValidator(districts: IDistrict[],newDistrict:IDistrict[]): IisValid {
+//     let result = isTwice({ arr: [...districts.map(d=>d.name),...newDistrict.map(d=>d.name)], key: "position" });
+//     if (!result.isValid)
+//       result.message = `district number ${result.message} is created more then once`;
+//     return result;
+//   }
+// }
 
 export class City extends Data<ICityData> {
   constructor(data: ICityData) {
     super(ClassTypes.city, data);
   }
-  addDistricts(districts: IDistrict[]) {
-    const { isValid, message } = CityValidators.districtValidator(
-      this._data.districts,
-      districts
-    );
-    if (isValid) {
-      this._data.districts.push(...districts);
-    } else {
-      this.error({
-        message,
-        caller: "addDistrict",
-        action: ErrorActionEnum.dbLog
-      });
-    }
+  addDistrict(district: IDistrict) {
+    this._data.districts.push(new District(district));
   }
+  // addDistricts(districts: IDistrict[]) {
+  //   const { isValid, message } = CityValidators.districtValidator(
+  //     this._data.districts,
+  //     districts
+  //   );
+  //   if (isValid) {
+  //     this._data.districts.push(...districts);
+  //   } else {
+  //     this.error({
+  //       message,
+  //       caller: "addDistrict",
+  //       action: ErrorActionEnum.dbLog
+  //     });
+  //   }
+  // }
 }

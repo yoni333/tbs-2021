@@ -1,7 +1,8 @@
-import { Metadata } from "../shared/metadata";
+import { ClassTypes, Data } from "../shared/data";
+import { IMetadata, Metadata } from "../shared/metadata";
 import { assignData } from "../shared/object-utils";
 import { UID } from "../shared/uid";
-import { IBuilding } from "./buildings";
+import { Building, IBuilding } from "./buildings";
 
 export enum ECityDistricts {
   palace = "palace",
@@ -10,7 +11,7 @@ export enum ECityDistricts {
   mage = "mage",
   academic = "academic",
   farms = "farms",
-  mines = "mines",
+  mines = "mines"
 }
 
 type ECityDistrictsKeys = keyof typeof ECityDistricts;
@@ -26,14 +27,14 @@ export enum ECityDistrictsNames {
   mage = "The mage lab",
   academic = "The Academic Area",
   farms = "The Farms",
-  mines = "The Mines",
+  mines = "The Mines"
 }
 
 export interface IBuildingLocation {
   metadata: Metadata;
   position: number; //in the district
   uid: UID; //taken from the building himself;
-  building: IBuilding;
+  building: Building;
 }
 export interface IDistrict {
   metadata: Metadata;
@@ -41,23 +42,11 @@ export interface IDistrict {
   displayName: ECityDistrictsNames;
   position: number; // place  in the city
   areaSize: number; //how much buildings that district can have
-  filledBy: IBuildingLocation[];
+  content: IBuildingLocation[];
 }
 
-
-export class District {
-  metadata: Metadata = new Metadata();
-  filledBy: IBuildingLocation[] = [];
-  name: ECityDistricts;
-  displayName: ECityDistrictsNames;
-  position: number; // place  in the city
-  areaSize: number; //how much buildings that district can have
-
-  constructor(data:Partial<IDistrict>) {
-
-    assignData.apply(this,data);
-
+export class District extends Data<IDistrict> {
+  constructor(data: IDistrict) {
+    super(ClassTypes.CityDistrict, data);
   }
-
-
 }

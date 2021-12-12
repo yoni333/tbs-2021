@@ -7,25 +7,23 @@ export enum ClassTypes {
   city = 20,
   CityDetails = 21,
   CityDistrict = 22,
-  Resources = 23,
+  CityBuilding = 24,
+  Resources = 1000
 }
 
-
-
-export abstract class Data<T>  {
-  protected _data!: T
+export abstract class Data<T> {
+  protected _data!: T;
   private _type: ClassTypes;
 
-  constructor(type: ClassTypes,data:T) {
+  constructor(type: ClassTypes, data: T) {
     this._type = type;
-    this.data = data
-
+    this._data = data;
   }
   get data(): T {
     return this._data;
   }
-  set data(data:T){
-    this._data=data
+  set data(data: T) {
+    this._data = data;
   }
   get type(): ClassTypes {
     return this._type;

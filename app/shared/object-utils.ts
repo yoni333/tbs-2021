@@ -1,6 +1,8 @@
-export function assignData<T>(Data: T) {
-  for (const [key, value] of Object.entries(Data)) {
-    this[key] = value;
+export type PrimitiveObject = { [key: string]: number | string };
+
+export function assignData<T extends PrimitiveObject>(selfData: any, data: T) {
+  for (const [key, value] of Object.entries(data || {})) {
+    selfData[key] = value;
   }
 }
 

@@ -1,5 +1,6 @@
 import { UID } from "../shared/uid";
 import { IResource } from "../shared/resource";
+import { ClassTypes, Data } from "../shared/data";
 
 export enum EBuildingName {
   farm = "farm",
@@ -24,4 +25,10 @@ export interface IBuilding {
   basicCost: IBasicCost;
   nextLevelMulti: number;
   dialog: IBuildingDialog;
+}
+
+export class Building extends Data<IBuilding> {
+  constructor(data: IBuilding) {
+    super(ClassTypes.CityBuilding, data);
+  }
 }

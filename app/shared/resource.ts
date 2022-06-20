@@ -35,11 +35,11 @@ function zeroResources():IResource{
   }
 }
 
-export class Resources extends Data<IResource> {
+export class Resources extends Data<Partial<IResource>> {
   
   private _resources:IResource
   constructor(resources: Partial<IResource>) {
-    super(ClassTypes.Resources)
+    super(ClassTypes.Resources,resources)
     this._resources  = {...zeroResources(),...resources}
   }
 

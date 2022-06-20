@@ -8,6 +8,7 @@ export enum ClassTypes {
   CityDetails = 21,
   CityDistrict = 22,
   CityBuilding = 24,
+  MapLocation =100,
   Resources = 1000
 }
 

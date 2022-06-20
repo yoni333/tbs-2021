@@ -12,7 +12,7 @@ export interface IMapLocation {
 export class MapLocation extends Data<IMapLocation>{
   constructor(data:IMapLocation)
   {
-    super()
+    super(ClassTypes.MapLocation,data)
   }
 
   
@@ -28,7 +28,7 @@ export interface ICityDetails{
 
 export class CityDetails  extends Data<ICityDetails>{
   constructor(data:ICityDetails){
-    super(ClassTypes.CityDetails)
+    super(ClassTypes.CityDetails,data)
     this._data=data;
   
   }

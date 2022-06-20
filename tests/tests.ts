@@ -33,15 +33,17 @@ const mockIDistrict2: IDistrict = {
   name: ECityDistricts.military
 };
 
-const cityDistrict: District = new District(mockIDistrict);
+const cityDistrict1: District = new District(mockIDistrict);
 const cityDistrict2: District = new District(mockIDistrict2);
 
 if (
-  cityDistrict.data.areaSize !== 4 ||
-  cityDistrict.data.position !== 1 ||
-  cityDistrict.data.displayName !== ECityDistrictsNames.academic
+  cityDistrict1.data.areaSize !== 4 ||
+  cityDistrict1.data.position !== 1 ||
+  cityDistrict1.data.displayName !== ECityDistrictsNames.academic
 ) {
   throw new Error("cityDistrict class failed");
+}else{
+  console.log('cityDistrict1 displayName:',cityDistrict1.data.displayName)
 }
 
 const cityDetails: CityDetails = new CityDetails({
@@ -53,6 +55,6 @@ const cityDetails: CityDetails = new CityDetails({
 
 const city: City = new City({
   resources: r,
-  districts: [cityDistrict, cityDistrict2],
+  districts: [cityDistrict1, cityDistrict2],
   details: cityDetails
 });

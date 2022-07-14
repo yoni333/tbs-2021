@@ -23,7 +23,8 @@ export type IResource = {
 
 
 function zeroResources():IResource{
-  return  {
+  // todo map set 
+  return   {
     food : 0 ,
     wood : 0 ,
     iron : 0 ,

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Resource } from '../01-domain/resource';
+import { ResourceService } from '../02-services/resource.service';
 
 @Component({
   selector: 'app-resource-bar',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResourceBarComponent implements OnInit {
 
-  constructor() { }
+  resources:Resource[]
+  constructor(private resourceService:ResourceService) { 
+    this.resources =this.resourceService.resources()
+  }
 
   ngOnInit(): void {
   }

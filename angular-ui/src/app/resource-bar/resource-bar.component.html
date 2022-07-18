@@ -1,1 +1,6 @@
 <p>resource-bar works!</p>
+<div class="main-resource-bar">
+    <ng-container *ngFor="let r of resources">
+        <app-resource [css]="'main-bar'" [resource]="r"></app-resource>
+    </ng-container>
+</div>

@@ -4,7 +4,7 @@ import { ClassTypes, Data } from "./data";
 import { assignData } from "./object-utils";
 
 
-export enum EResource {
+export enum EResources {
   food = 'food',
   wood = 'wood',
   iron = 'iron',
@@ -15,14 +15,14 @@ export enum EResource {
   magicPowder = 'magicPowder',
 };
 
-type EResourceKeys = keyof typeof EResource;
+type EResourceKeys = keyof typeof EResources;
 
-export type IResource = {
+export type IResources = {
   [key in EResourceKeys]: number;
 }
 
 
-function zeroResources():IResource{
+function zeroResources():IResources{
   // todo map set 
   return   {
     food : 0 ,
@@ -36,16 +36,16 @@ function zeroResources():IResource{
   }
 }
 
-export class Resources extends Data<Partial<IResource>> {
+export class Resources extends Data<Partial<IResources>> {
   
-  private _resources:IResource
-  constructor(resources: Partial<IResource>) {
+  private _resources:IResources
+  constructor(resources: Partial<IResources>) {
     super(ClassTypes.Resources,resources)
     this._resources  = {...zeroResources(),...resources}
   }
 
 
-  get resources():IResource{
+  get resources():IResources{
     return this._resources
   }
   

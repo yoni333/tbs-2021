@@ -1,5 +1,5 @@
 import { UID } from "../shared/uid";
-import { IResource } from "../shared/resource";
+import { IResources } from "../shared/resource";
 import { ClassTypes, Data } from "../shared/data";
 
 export enum EBuildingName {
@@ -13,7 +13,7 @@ export enum EBuildingName {
   coalMine = "coalMine"
 }
 
-export interface IBasicCost extends IResource {}
+export interface IBasicCost extends IResources {}
 
 export interface IBuildingDialog {}
 

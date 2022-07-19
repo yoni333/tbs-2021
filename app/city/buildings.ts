@@ -13,7 +13,7 @@ export enum EBuildingName {
   coalMine = "coalMine"
 }
 
-export interface IBasicCost extends IResources {}
+export interface IBasicCost extends Partial<IResources> {}
 
 export interface IBuildingDialog {}
 

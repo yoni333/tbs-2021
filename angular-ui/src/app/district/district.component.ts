@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Building } from '../01-domain/building';
 import { Card } from '../01-domain/card';
+import { BuildingService } from '../02-services/buildings.service';
 import { CardsService } from '../02-services/card.service';
 
 @Component({
@@ -10,8 +12,10 @@ import { CardsService } from '../02-services/card.service';
 export class DistrictComponent implements OnInit {
 
   cards:Card[]
-  constructor(private CardsService:CardsService) {
-    this.cards= this.CardsService.cards
+  buildings:Building[]
+  constructor(private CardsService:CardsService , private buildingService:BuildingService) {
+    this.cards= this.CardsService.cards;
+    this.buildings= buildingService.buildingList()
    }
 
   ngOnInit(): void {

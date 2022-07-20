@@ -10,7 +10,7 @@ import {
 } from '../../../../app/city/buildings';
 import { Data } from '../../../../app/shared/data';
 export class Building extends BuildingModel {
-  constructor( data :Data<IBuilding>) {
+  constructor( data :IBuilding) {
     super(data);
   }
 }

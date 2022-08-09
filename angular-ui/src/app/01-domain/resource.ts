@@ -1,5 +1,5 @@
-import {EResources} from '../../../../app/shared/resource'
-
+import {EResources,IResources} from '../../../../app/shared/resource'
+export {EResources,IResources};
 export class Resource{
 
     private _name:EResources

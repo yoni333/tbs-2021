@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Building, IBuilding } from '../01-domain/building';
 
 @Component({
   selector: 'app-building',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./building.component.scss']
 })
 export class BuildingComponent implements OnInit {
-
+  @Input() building!:Building
   constructor() { }
 
   ngOnInit(): void {

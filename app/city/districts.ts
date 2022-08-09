@@ -9,7 +9,6 @@ export enum ECityDistricts {
   tradeYard = "trade",
   military = "military",
   mage = "mage",
-  academic = "academic",
   farms = "farms",
   mines = "mines"
 }
@@ -25,7 +24,6 @@ export enum ECityDistrictsNames {
   tradeYard = "The Trade Area ",
   military = "The Military Camp",
   mage = "The mage lab",
-  academic = "The Academic Area",
   farms = "The Farms",
   mines = "The Mines"
 }

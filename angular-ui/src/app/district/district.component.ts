@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Building } from '../01-domain/building';
+import { Component, Input, OnInit } from '@angular/core';
+import { Building, IBuilding } from '../01-domain/building';
 import { Card } from '../01-domain/card';
+import { District,IBuildingLocation } from '../01-domain/district';
 import { BuildingService } from '../02-services/buildings.service';
-import { CardsService } from '../02-services/card.service';
+import { DistrictService } from '../02-services/district.service';
 
 @Component({
   selector: 'app-district',
@@ -10,12 +11,10 @@ import { CardsService } from '../02-services/card.service';
   styleUrls: ['./district.component.scss']
 })
 export class DistrictComponent implements OnInit {
-
-  cards:Card[]
-  buildings:Building[]
-  constructor(private CardsService:CardsService , private buildingService:BuildingService) {
-    this.cards= this.CardsService.cards;
-    this.buildings= buildingService.buildingList()
+  @Input() district!:District
+  buildings:IBuildingLocation[]
+  constructor() {
+    this.buildings=this.district.data.content
    }
 
   ngOnInit(): void {

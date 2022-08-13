@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { City } from '../01-domain/city';
 import { District } from '../01-domain/district';
-import { DistrictService } from '../02-services/district.service';
+import { CityService } from '../02-services/district.service';
 
 @Component({
   selector: 'app-city',
@@ -8,10 +9,14 @@ import { DistrictService } from '../02-services/district.service';
   styleUrls: ['./city.component.scss']
 })
 export class CityComponent implements OnInit {
-
+  city:City
   districts:District[] = []
-  constructor(private districtService:DistrictService) {
-    this.districts = this.districtService.districtList()
+  constructor(private districtService:CityService) {
+    this.city = this.districtService.city()
+    this.districts = this.city.data.districts
+    console.log(this.districts[0].data);
+    
+    
    }
 
   ngOnInit(): void {

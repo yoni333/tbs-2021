@@ -10,7 +10,11 @@ export enum EBuildingName {
   ironMine = "ironMine",
   stoneMine = "stoneMine",
   silverMine = "silverMine",
-  coalMine = "coalMine"
+  coalMine = "coalMine",
+  palace ="palace",
+  warriorsHall ="warriorsHall",
+  embassy='embassy',
+
 }
 
 export interface IBasicCost extends Partial<IResources> {}

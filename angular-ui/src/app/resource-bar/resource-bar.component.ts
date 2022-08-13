@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ResourcesUI } from '../01-domain/resource';
+import { ResourcesUI, ResourcesUiItemsMap } from '../01-domain/resource';
 import { ResourceService } from '../02-services/resource.service';
 
 @Component({
@@ -9,9 +9,9 @@ import { ResourceService } from '../02-services/resource.service';
 })
 export class ResourceBarComponent implements OnInit {
 
-  resources:ResourcesUI[]
+  resources:ResourcesUiItemsMap
   constructor(private resourceService:ResourceService) { 
-    this.resources =this.resourceService.resources()
+    this.resources =this.resourceService.resources().resources
   }
 
   ngOnInit(): void {

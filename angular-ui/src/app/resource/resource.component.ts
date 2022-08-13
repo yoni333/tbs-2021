@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ResourcesUI } from '../01-domain/resource';
+import { ResourcesUI, ResourcesUiItem } from '../01-domain/resource';
 
 
 
@@ -11,7 +11,7 @@ import { ResourcesUI } from '../01-domain/resource';
 export class ResourceComponent implements OnInit {
 
   @Input() public css:string='';
-  @Input() public resource!:ResourcesUI;
+  @Input() public resource!:ResourcesUiItem;
   constructor() { }
 
   ngOnInit(): void {

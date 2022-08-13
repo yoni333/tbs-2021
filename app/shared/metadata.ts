@@ -9,7 +9,4 @@ export class Metadata extends Data<IMetadata> {
     super(ClassTypes.Metadata, data);
   }
 
-  get data(): IMetadata {
-    return this._data;
-  }
 }

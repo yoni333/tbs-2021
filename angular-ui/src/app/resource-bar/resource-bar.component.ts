@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Resource } from '../01-domain/resource';
+import { ResourcesUI } from '../01-domain/resource';
 import { ResourceService } from '../02-services/resource.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { ResourceService } from '../02-services/resource.service';
 })
 export class ResourceBarComponent implements OnInit {
 
-  resources:Resource[]
+  resources:ResourcesUI[]
   constructor(private resourceService:ResourceService) { 
     this.resources =this.resourceService.resources()
   }

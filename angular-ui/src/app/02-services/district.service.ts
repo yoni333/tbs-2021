@@ -19,9 +19,5 @@ export class DistrictService{
             new Building({basicCost:{wood:100,food:300,iron:300},level:1,maxLevel:20,name:EBuildingName.barracks,nextLevelMulti:1.5,uid:'asd17',dialog:{}}),
         ]
     }
-    districtList():District[]{
-        return [
-            new District({})
-        ]
-    }
+    
 }

@@ -1,21 +1,27 @@
-import {EResources,IResources} from '../../../../app/shared/resource'
-export {EResources,IResources};
-export class Resource{
+import {EResources,IResources,zeroResources,SpendAnswer,Resources, ResourcesMap, ResourcesIconMap} from '../../../../app/shared/resource'
+export {EResources,IResources,zeroResources,SpendAnswer,Resources,ResourcesMap,ResourcesIconMap};
 
-    private _name:EResources
-    amount:number
-    icon:string
-    get name():EResources{
-        return this._name;
+export interface ResourcesUiItem{name:EResources,amount:number,icon:string}
+export type ResourcesUiItemsMap = Map<EResources,ResourcesUiItem>
+export class ResourcesUI{
+
+    private _resources:ResourcesMap
+    private _iconList:ResourcesIconMap
+     
+    constructor(resources:ResourcesMap,iconList:ResourcesIconMap){
+        this._resources=resources
+        this._iconList=iconList
+        
+        
     }
-    constructor(name:EResources,amount:number,icon:string){
-        if (!Number.isInteger(amount) || icon.length===0){
-            throw new Error("error in resource init");
+
+    get resources():ResourcesUiItemsMap{
+        const items :ResourcesUiItemsMap = new Map()
+        for (const [key,value] of  this._resources){
+            items.set(key,{name:key,amount:value,icon:this._iconList.get(key)||''})
         }
-        //TODO add name check EResource
-        this._name =name;
-        this.amount=amount;
-        this.icon=icon;
+        return items;
     }
+
 }
 

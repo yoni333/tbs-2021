@@ -3,50 +3,82 @@
 import { ClassTypes, Data } from "./data";
 import { assignData } from "./object-utils";
 
-
 export enum EResources {
-  food = 'food',
-  wood = 'wood',
-  iron = 'iron',
-  stone = 'stone',
-  silver = 'silver',
-  gold = 'gold',
-  coal = 'coal',
-  magicPowder = 'magicPowder',
-};
+  food = "food",
+  wood = "wood",
+  iron = "iron",
+  stone = "stone",
+  silver = "silver",
+  gold = "gold",
+  coal = "coal",
+  magicPowder = "magicPowder",
+}
 
 type EResourceKeys = keyof typeof EResources;
 
 export type IResources = {
   [key in EResourceKeys]: number;
+};
+
+export type ResourcesMap = Map<EResources, number>;
+export type ResourcesIconMap = Map<EResources, string>;
+
+export function zeroResources(): ResourcesMap {
+  const r = new Map();
+  r.set(EResources.food, 0);
+  r.set(EResources.wood, 0);
+  r.set(EResources.iron, 0);
+  r.set(EResources.stone, 0);
+  r.set(EResources.silver, 0);
+  r.set(EResources.gold, 0);
+  r.set(EResources.coal, 0);
+  r.set(EResources.magicPowder, 0);
+
+  return r;
 }
 
-
-function zeroResources():IResources{
-  // todo map set 
-  return   {
-    food : 0 ,
-    wood : 0 ,
-    iron : 0 ,
-    stone : 0 ,
-    silver : 0 ,
-    gold : 0 ,
-    coal : 0 ,
-    magicPowder : 0 ,
+export class SpendAnswer {
+  haveResources: boolean = false;
+  missingResources: ResourcesMap = zeroResources();
+  constructor(haveResources: boolean, missingResources: ResourcesMap) {
+    this.haveResources = haveResources;
+    this.missingResources = missingResources;
   }
 }
 
-export class Resources extends Data<Partial<IResources>> {
-  
-  private _resources:IResources
-  constructor(resources: Partial<IResources>) {
-    super(ClassTypes.Resources,resources)
-    this._resources  = {...zeroResources(),...resources}
+export class Resources extends Data<ResourcesMap> {
+  private _resources: ResourcesMap;
+  get resources(): ResourcesMap {
+    return this._resources;
   }
-
-
-  get resources():IResources{
-    return this._resources
+  set resources(resources: ResourcesMap) {
+    this._resources = resources
   }
-  
+  constructor(resources: ResourcesMap) {
+    super(ClassTypes.Resources, resources)
+    this._resources = resources
+  }
+  checkIfCanBuild(needResources: ResourcesMap) {
+    let haveResources: boolean = true
+    const afterCalc = new Map()
+    for (const [key, value] of needResources) {
+      haveResources =
+        (this.resources.get(key) || 0) - value >= 0 ? true : false;
+    }
+    return haveResources;
+  }
+  subResources(needResources: ResourcesMap): ResourcesMap {
+    const resourceAfterBuild: ResourcesMap = new Map();
+    for (const [key, value] of needResources) {
+      resourceAfterBuild.set(key, (this.resources.get(key) || 0) - value);
+    }
+    return resourceAfterBuild;
+  }
+  spend(needResources: ResourcesMap): SpendAnswer {
+    const haveResources: boolean = this.checkIfCanBuild(needResources);
+    if (haveResources) {
+      this.resources = this.subResources(needResources)
+    }
+    return new SpendAnswer(haveResources, this.subResources(needResources));
+  }
 }

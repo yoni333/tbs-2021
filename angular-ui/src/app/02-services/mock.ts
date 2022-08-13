@@ -1,16 +1,16 @@
 import { City, CityDetails, MapLocation, Metadata } from '../01-domain/city';
 import { District } from '../01-domain/district';
-import { EResources, Resource } from '../01-domain/resource';
+import { EResources, ResourcesUI } from '../01-domain/resource';
 export function mockResources(){
     return [ 
-        new Resource(EResources.food,1000,'http'),
-        new Resource(EResources.wood,1000,'http'),
-        new Resource(EResources.stone,1000,'http'),
-        new Resource(EResources.iron,1000,'http'),
-        new Resource(EResources.coal,1000,'http'),
-        new Resource(EResources.silver,1000,'http'),
-        new Resource(EResources.gold,1000,'http'),
-        new Resource(EResources.magicPowder,1000,'http'),
+        new ResourcesUI(EResources.food,1000,'http'),
+        new ResourcesUI(EResources.wood,1000,'http'),
+        new ResourcesUI(EResources.stone,1000,'http'),
+        new ResourcesUI(EResources.iron,1000,'http'),
+        new ResourcesUI(EResources.coal,1000,'http'),
+        new ResourcesUI(EResources.silver,1000,'http'),
+        new ResourcesUI(EResources.gold,1000,'http'),
+        new ResourcesUI(EResources.magicPowder,1000,'http'),
     ]
 }
 export function mockDistrict(): District {

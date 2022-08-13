@@ -1,9 +1,9 @@
 <p>district works!</p>
 <div class="card-container">
-    <ng-container *ngFor="let b of buildings">
+    <ng-container *ngFor="let buildingLocation of buildings">
 
-        <app-card [title]="b.data.name" >
-            <app-building [building]="b" ></app-building>
+        <app-card [title]="buildingLocation.building.data.name" >
+            <app-building [building]="buildingLocation.building" ></app-building>
         </app-card>
     
     </ng-container>

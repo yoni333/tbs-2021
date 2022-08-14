@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Building, IBuilding } from '../01-domain/building';
 import { Card } from '../01-domain/card';
 import { District,IBuildingLocation } from '../01-domain/district';
@@ -11,7 +12,7 @@ import { CityService } from '../02-services/city.service';
   styleUrls: ['./district.component.scss']
 })
 export class DistrictComponent implements OnInit {
-  district:District|null=null
+  district!:District
   buildings!:IBuildingLocation[]|undefined
   constructor(private cityService:CityService) {
   }
@@ -19,6 +20,7 @@ export class DistrictComponent implements OnInit {
   ngOnInit(): void {
     this.district=this.cityService.district
     this.buildings=this.district?.data?.content
+    
   }
-
+  
 }

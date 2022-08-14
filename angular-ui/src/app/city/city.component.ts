@@ -11,8 +11,8 @@ import { CityService } from '../02-services/city.service';
 export class CityComponent implements OnInit {
   city:City
   districts:District[] = []
-  constructor(private districtService:CityService) {
-    this.city = this.districtService.city()
+  constructor(private cityService:CityService) {
+    this.city = this.cityService.city()
     this.districts = this.city.data.districts
     console.log(this.districts[0].data);
     
@@ -22,6 +22,6 @@ export class CityComponent implements OnInit {
   ngOnInit(): void {
   }
   changeDistrict(d:District){
-    this.districtService.setDistrict(d)
+    this.cityService.setDistrict(d)
   }
 }

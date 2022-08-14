@@ -1,5 +1,10 @@
 <p>city works!</p>
-
-<div *ngFor="let d of districts">
-   <app-district [district]="d"></app-district> 
+<section class="container-fluid">
+  <div class="row justify-content-center">
+    <div *ngFor="let d of districts" class="district-main col-2" (click)="changeDistrict(d)">
+      {{ d.data.displayName }}
+      <img src="{{d.data.icon}}">
+   </div>
 </div>
+</section>
+<app-district ></app-district> 

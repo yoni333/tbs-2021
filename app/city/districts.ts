@@ -35,6 +35,7 @@ export interface IBuildingLocation {
   building: Building;
 }
 export interface IDistrict {
+  icon:string;
   metadata: Metadata;
   name: ECityDistricts;
   displayName: ECityDistrictsNames;

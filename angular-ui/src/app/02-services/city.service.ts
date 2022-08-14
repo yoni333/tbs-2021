@@ -6,10 +6,14 @@ import { District } from "../01-domain/district";
 import { mockCityData } from "./mock";
 @Injectable({providedIn:'root'})
 export class CityService{
+    district:District|null=null
     constructor(){
 
     }
 
+    setDistrict(district:District){
+        this.district=district
+    }
 
    city():City{
     return mockCityData()

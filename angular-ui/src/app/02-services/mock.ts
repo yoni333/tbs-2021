@@ -32,7 +32,7 @@ export function mockIconResourcesList(): ResourcesIconMap {
 }
 export function mockDistrictFarm(): District {
   return  new District({areaSize:6,displayName:ECityDistrictsNames.farms,metadata:new Metadata({}),
-    name:ECityDistricts.farms,position:1,content:buildingForFarmDistricy()})
+    name:ECityDistricts.farms,position:1,content:buildingForFarmDistricy(),icon:'assets/castle.png'})
   
 }
 
@@ -88,7 +88,7 @@ export function buildingForFarmDistricy(): IBuildingLocation[]{
 }
 export function mockDistrictPalace(): District {
   return  new District({areaSize:6,displayName:ECityDistrictsNames.palace,metadata:new Metadata({}),
-    name:ECityDistricts.palace,position:1,content:buildingForPalaceDistrict()})
+    name:ECityDistricts.palace,position:1,content:buildingForPalaceDistrict(),icon:'assets/castle 2.png'})
   
 }
 
@@ -119,6 +119,39 @@ export function buildingForPalaceDistrict(): IBuildingLocation[]{
  
   ]
 }
+export function mockDistrictMilitary(): District {
+  return  new District({areaSize:6,displayName:ECityDistrictsNames.military,metadata:new Metadata({}),
+    name:ECityDistricts.palace,position:1,content:buildingForPalaceDistrict(),icon:'assets/castle.png'})
+  
+}
+
+export function buildingForMilitaryDistrict(): IBuildingLocation[]{
+  return [ {
+    building:
+    new Building({basicCost:{wood:100},level:1,maxLevel:20,name:EBuildingName.barracks,nextLevelMulti:1.5,uid:'asd12',dialog:{}}),
+    position:1,
+    uid:createUID(),
+    metadata:new Metadata({})
+  },
+  {
+    building:
+    new Building({basicCost:{wood:100},level:1,maxLevel:20,name:EBuildingName.hospital,nextLevelMulti:1.5,uid:'asd12',dialog:{}}),
+
+    position:1,
+    uid:createUID(),
+    metadata:new Metadata({})
+  },
+  {
+    building:
+    new Building({basicCost:{food:100},level:1,maxLevel:20,name:EBuildingName.workshop,nextLevelMulti:1.5,uid:'asd14',dialog:{}}),
+
+    position:1,
+    uid:createUID(),
+    metadata:new Metadata({})
+  },
+ 
+  ]
+}
 
 export function mockCityData():City {
   return new City({
@@ -128,7 +161,7 @@ export function mockCityData():City {
       location: new MapLocation({ x: 1, y: 1 }),
       metadata: new Metadata({}),
     }),
-    districts: [mockDistrictPalace(),mockDistrictFarm()],
+    districts: [mockDistrictPalace(),mockDistrictFarm(),mockDistrictMilitary()],
     resources:new Resources( mockResources()),
   });
 }

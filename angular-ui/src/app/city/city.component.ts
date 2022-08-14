@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { City } from '../01-domain/city';
 import { District } from '../01-domain/district';
-import { CityService } from '../02-services/district.service';
+import { CityService } from '../02-services/city.service';
 
 @Component({
   selector: 'app-city',
@@ -21,5 +21,7 @@ export class CityComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  changeDistrict(d:District){
+    this.districtService.setDistrict(d)
+  }
 }

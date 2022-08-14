@@ -5,7 +5,6 @@ import { ClassTypes, Data } from "../shared/data";
 export enum EBuildingName {
   farm = "farm",
   lumberYard = "lumberYard",
-  barracks = "barracks",
   goldMine = "goldMine",
   ironMine = "ironMine",
   stoneMine = "stoneMine",
@@ -14,6 +13,10 @@ export enum EBuildingName {
   palace ="palace",
   warriorsHall ="warriorsHall",
   embassy='embassy',
+  barracks = "barracks",
+  workshop='workshop',
+  hospital='hospital',
+  
 
 }
 

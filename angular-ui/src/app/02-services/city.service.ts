@@ -8,7 +8,9 @@ import { mockCityData } from "./mock";
 @Injectable({providedIn:'root'})
 export class CityService{
    district!:District
-    
+   districtSubject:BehaviorSubject<District|null> = new BehaviorSubject<District|null>(null);
+   district$:Observable<<District> = this.districtSubject.asObservable().pipe(filter(d=>d!==null));
+
     constructor(){
 
     }
